@@ -4,6 +4,9 @@ const app = express();
 const PORT = 3000;
 
 const uesrRouter = require('./routes/user');
+const authRouter = require('./routes/auth');
+
+const itemsRouter = require('./routes/items');
 
 app.listen(PORT, () => console.log('Server running...'));
 
@@ -30,6 +33,9 @@ app.get('/', (req, res) => {
 
 // Routing
 app.use('/users', uesrRouter);
+app.use('/auth',  authRouter);
+
+app.use('/items', itemsRouter);
 
 app.get('/:id', (req, res) => {
   res.send(`<h1>PARAMETER:${req.params.id}</h1>`);
